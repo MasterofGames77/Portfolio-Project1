@@ -21,7 +21,7 @@ def input_player_letter():
     letter = ' '
     while not (letter == 'X' or letter == 'O'):
         print('Do you want to be X or O?')
-        letter - input().upper()
+        letter = input().upper()
 
     if letter == 'X':
         return ['X', 'O']
@@ -37,8 +37,8 @@ def who_goes_first():
     
 def play_again():
     # Function returns True if the player wants to play again, otherwise it returns False.
-    print('Would you like to play again? (Yes or No)')
-    return input().upper().startswith('Y')
+    print('Would you like to play again? (yes or no)')
+    return input().lower().startswith('y')
 
 def make_move(board, letter, move):
     board[move] = letter
@@ -161,7 +161,7 @@ while True:
         else:
             # The AI's turn.
             move = get_ai_move(game_board, ai_letter)
-            make_move(game_board, ai_letter)
+            make_move(game_board, ai_letter, move)
             if has_won(game_board, ai_letter):
                 draw_board(game_board)
                 print('The computer has defeated you. You lose.')
